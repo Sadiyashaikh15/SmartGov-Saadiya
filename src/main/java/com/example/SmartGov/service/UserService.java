@@ -2,6 +2,7 @@ package com.example.SmartGov.service;
 
 import com.example.SmartGov.dto.UserDto;
 import com.example.SmartGov.entity.User;
+import com.example.SmartGov.enums.ROLES;
 import com.example.SmartGov.exception.ResouceNotFoundException;
 import com.example.SmartGov.mapper.UserMapper;
 import com.example.SmartGov.repository.UserRepository;
@@ -18,6 +19,16 @@ public class UserService {
 
     public UserDto createUser(UserDto userDto) {
         User user = UserMapper.toUserEntity(userDto);
+        if (user.getRole() == ROLES.OFFICERS) {
+            System.out.println("Officer account created successfully!");
+            // officer-specific setup logic (e.g., assign district)
+        } else if (user.getRole() == ROLES.CITIZENS) {
+            System.out.println("Citizen account created successfully!");
+            // citizen-specific setup
+        } else if (user.getRole() == ROLES.ADMIN) {
+            System.out.println("Admin account created successfully!");
+            // admin-specific setup
+        }
         user = userRepository.save(user);
         return UserMapper.toUserDto(user);
     }
