@@ -67,6 +67,7 @@ public class UserDto {
     @Size(min = 4, max = 20, message = "Username must be between 4 and 20 characters")
     @Pattern(regexp = "^[A-Za-z0-9_]+$", message = "Username can only contain letters, numbers, and underscores")
     private String username;
+
     private String password;
 
     public Long getUserId() {
