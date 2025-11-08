@@ -21,6 +21,8 @@ public class UserMapper {
         userDto.setGender(user.getGender());
         userDto.setRole(user.getRole());
         userDto.setCreatedAt(user.getCreatedAt());
+        userDto.setUsername(user.getUsername());
+        userDto.setPassword(userDto.getPassword());
 
         return userDto;
     }
@@ -41,6 +43,8 @@ public class UserMapper {
         user.setGender(userDto.getGender());
         user.setRole(userDto.getRole());
         user.setCreatedAt(userDto.getCreatedAt());
+        user.setPassword(userDto.getPassword());
+        user.setUsername(userDto.getUsername());
 
         return user;
     }

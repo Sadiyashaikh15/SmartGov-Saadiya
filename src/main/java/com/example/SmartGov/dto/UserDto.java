@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
 
 import java.time.LocalDate;
 
@@ -15,21 +16,25 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
-
+@Validated
 public class UserDto {
 
     private Long userId;
+
+
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
-    private Long aadharNumber;
+    private String aadharNumber;
     private String email;
-    private Long mobileNumber;
+    private String mobileNumber;
     private State state;
     private District district;
     private Gender gender;
     private ROLES role;
     private LocalDate createdAt;
+    private String username;
+    private String password;
 
     public Long getUserId() {
         return userId;
@@ -63,11 +68,11 @@ public class UserDto {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Long getAadharNumber() {
+    public String getAadharNumber() {
         return aadharNumber;
     }
 
-    public void setAadharNumber(Long aadharNumber) {
+    public void setAadharNumber(String aadharNumber) {
         this.aadharNumber = aadharNumber;
     }
 
@@ -79,11 +84,11 @@ public class UserDto {
         this.email = email;
     }
 
-    public Long getMobileNumber() {
+    public String getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(Long mobileNumber) {
+    public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 
@@ -125,5 +130,21 @@ public class UserDto {
 
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

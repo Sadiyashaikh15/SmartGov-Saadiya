@@ -40,13 +40,13 @@ public class User {
     private Gender gender;
 
     @Column(nullable = false , length = 12,unique = true)
-    private Long aadharNumber;
+    private String aadharNumber;
 
     @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false , length = 10, unique = true)
-    private Long mobileNumber;
+    private String mobileNumber;
 
     private State States;
 
@@ -56,6 +56,12 @@ public class User {
 
     @Column(nullable = false)
     private LocalDate createdAt;
+
+    @Column(nullable = false , unique = true)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
 
     @PrePersist
     protected void onCreate() {
@@ -105,11 +111,11 @@ public class User {
         this.gender = gender;
     }
 
-    public Long getAadharNumber() {
+    public String getAadharNumber() {
         return aadharNumber;
     }
 
-    public void setAadharNumber(Long aadharNumber) {
+    public void setAadharNumber(String aadharNumber) {
         this.aadharNumber = aadharNumber;
     }
 
@@ -121,11 +127,11 @@ public class User {
         this.email = email;
     }
 
-    public Long getMobileNumber() {
+    public String getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(Long mobileNumber) {
+    public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 
@@ -159,5 +165,21 @@ public class User {
 
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
