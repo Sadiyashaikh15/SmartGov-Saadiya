@@ -21,13 +21,11 @@ public class UserService {
         User user = UserMapper.toUserEntity(userDto);
         if (user.getRole() == ROLES.OFFICERS) {
             System.out.println("Officer account created successfully!");
-            // officer-specific setup logic (e.g., assign district)
         } else if (user.getRole() == ROLES.CITIZENS) {
             System.out.println("Citizen account created successfully!");
-            // citizen-specific setup
         } else if (user.getRole() == ROLES.ADMIN) {
             System.out.println("Admin account created successfully!");
-            // admin-specific setup
+
         }
         user = userRepository.save(user);
         return UserMapper.toUserDto(user);
