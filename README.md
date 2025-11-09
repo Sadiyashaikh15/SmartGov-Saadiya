@@ -61,7 +61,7 @@ Lombok – Reduces boilerplate code with annotations like @Getter, @Setter, and 
 Presentation Layer:
 Angular-based frontend for citizens, officers, and administrators.
 
-Application Layer (Backend – Spring Boot):
+**Application Layer (Backend – Spring Boot):**
 Structured into the following packages:
 
 Controller Layer: Handles incoming HTTP requests and maps them to service methods.
@@ -86,7 +86,48 @@ Payload Layer: Contains request and response objects for API communication.
 
 Data Layer:
 Postgresql database used for structured data storage and persistence.
+## 🗂️ Project Structure
 
+```markdown
+SmartGov/
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── components/          # Reusable UI components
+│   │   │   ├── pages/               # Application pages (Dashboard, Login, etc.)
+│   │   │   ├── services/            # API service calls (HTTP requests)
+│   │   │   ├── guards/              # Route guards for authentication
+│   │   │   ├── models/              # Interfaces and types
+│   │   └── assets/                  # Images, icons, and static files
+│   ├── package.json                 # Frontend dependencies
+│   ├── angular.json                 # Angular configuration
+│   └── tailwind.config.js           # Tailwind CSS configuration
+
+├── backend/
+│   ├── src/
+│   │   └── main/
+│   │       ├── java/
+│   │       │   └── com/example/SmartGov/
+│   │       │       ├── controller/          # REST controllers (API endpoints)
+│   │       │       ├── service/             # Business logic layer
+│   │       │       ├── repository/          # Database access layer (JPA Repositories)
+│   │       │       ├── entity/              # JPA entities (database models)
+│   │       │       ├── dto/                 # Data Transfer Objects
+│   │       │       ├── mapper/              # Entity-DTO converters
+│   │       │       ├── security/            # Spring Security + JWT configuration
+│   │       │       ├── exception/           # Global exception handlers and custom exceptions
+│   │       │       ├── enums/               # Enum definitions (Roles, States, Districts, etc.)
+│   │       │       ├── payload/             # Request/Response objects
+│   │       │       └── SmartGovApplication.java  # Main Spring Boot application class
+│   │       └── resources/
+│   │           ├── application.properties    # Spring Boot configuration
+│   │           └── static/                   # Static resources (if any)
+│   ├── pom.xml                               # Maven build configuration
+│   └── target/                               # Compiled output files
+
+├── README.md                                 # Project documentation
+└── .gitignore                                # Git ignore file
+```
 ## Features
 Citizen registration and login
 
