@@ -48,7 +48,7 @@ Spring Security with JWT – Implements secure authentication and authorization 
 
 Spring Data JPA / Hibernate – For ORM (Object Relational Mapping) and database operations
 
-MySQL – Relational database used for structured and persistent data storage
+Postgresql – Relational database used for structured and persistent data storage
 
 Maven – Build automation and dependency management tool
 
