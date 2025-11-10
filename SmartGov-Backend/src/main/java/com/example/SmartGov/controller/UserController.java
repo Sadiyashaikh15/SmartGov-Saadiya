@@ -20,7 +20,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/createUser")
+    @PostMapping("/createAccount")
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
     UserDto createUser = userService.createUser(userDto);
     return new ResponseEntity<>(createUser ,HttpStatus.CREATED);
@@ -35,5 +35,10 @@ public class UserController {
     @GetMapping("/getUserBy/{id}")
     public UserDto getUserById(@PathVariable Long id){
         return userService.getUserById(id);
+    }
+
+    @PutMapping("/updateAccount/{id}")
+    public UserDto updateUser(@PathVariable Long id , @RequestBody UserDto userDto){
+        return userService.updateUser(id, userDto);
     }
 }
