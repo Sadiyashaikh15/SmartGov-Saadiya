@@ -1,0 +1,310 @@
+
+:root {
+    --smartgov-blue-dark: #004080; 
+    --smartgov-blue-light: #A7D7F5; 
+    --smartgov-grey-text: #333333;
+    --smartgov-grey-light: #E0E0E0;
+    --smartgov-white: #FFFFFF;
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--smartgov-grey-light);
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    width: 900px;
+    height: 600px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background-color: var(--smartgov-white);
+    overflow: hidden;
+}
+
+
+.left-panel {
+    flex: 1;
+    background-color: var(--smartgov-blue-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: var(--smartgov-white);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.left-panel-content {
+    z-index: 1;
+    max-width: 85%;
+}
+
+.left-panel h2 {
+    font-size: 1.7em;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+.left-panel p {
+    font-size: 0.9em;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+
+.smartgov-image-placeholder {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 30px auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.smartgov-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.shape {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.circle-lg { width: 220px; height: 220px; }
+.circle-md { width: 130px; height: 130px; }
+.circle-sm { width: 80px; height: 80px; }
+.square-sm { width: 60px; height: 60px; border-radius: 10px; }
+
+.top-left { top: -60px; left: -60px; }
+.bottom-right { bottom: -40px; right: -40px; }
+.top-right { top: 30px; right: 30px; border-radius: 5px;}
+.bottom-left { bottom: 60px; left: 60px; }
+
+
+.right-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.login-form-container {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.login-form-container h3 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    color: var(--smartgov-grey-text);
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-group input {
+    width: calc(100% - 20px);
+    padding: 12px 10px;
+    border: 1px solid var(--smartgov-grey-light);
+    border-radius: 8px;
+    font-size: 1em;
+    color: var(--smartgov-grey-text);
+}
+
+.input-group input:focus {
+    border-color: var(--smartgov-blue-dark);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 64, 128, 0.2);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #A0A0A0;
+    font-size: 1.1em;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    font-size: 0.9em;
+    user-select: none;
+    color: var(--smartgov-grey-text);
+    text-align: left;
+}
+
+.checkbox-container input { opacity: 0; position: absolute; }
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+    border-radius: 4px;
+    border: 1px solid var(--smartgov-grey-light);
+}
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--smartgov-blue-dark);
+    border-color: var(--smartgov-blue-dark);
+}
+.checkmark:after { content: ""; position: absolute; display: none; }
+.checkbox-container input:checked ~ .checkmark:after { display: block; }
+.checkbox-container .checkmark:after {
+    left: 6px; top: 2px; width: 5px; height: 10px;
+    border: solid white; border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.reset-password {
+    color: var(--smartgov-blue-dark);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.reset-password:hover {
+    text-decoration: underline;
+}
+
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--smartgov-blue-dark);
+    color: var(--smartgov-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.login-button:hover {
+    background-color: #002D5A;
+}
+
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #A0A0A0;
+    margin-bottom: 25px;
+}
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--smartgov-grey-light);
+}
+.separator:not(:empty)::before { margin-right: .25em; }
+.separator:not(:empty)::after { margin-left: .25em; }
+
+
+.social-logins {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.social-button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--smartgov-grey-light);
+    background-color: var(--smartgov-white);
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--smartgov-grey-text);
+    font-weight: 600;
+}
+
+.social-button:hover {
+    border-color: var(--smartgov-blue-dark);
+    color: var(--smartgov-blue-dark);
+}
+
+
+.signup-link {
+    font-size: 0.9em;
+    color: var(--smartgov-grey-text);
+}
+
+.signup-link a {
+    color: var(--smartgov-blue-dark);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .left-panel {
+        height: 250px;
+        padding: 20px;
+    }
+
+    .right-panel {
+        padding: 30px 20px;
+    }
+
+    .shape {
+        display: none;
+    }
+}
