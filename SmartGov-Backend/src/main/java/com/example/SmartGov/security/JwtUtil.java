@@ -17,7 +17,7 @@ public class JwtUtil {
     private final JwtSecretKeyGenerator keyGenerator;
     private static  final long Expiration_time =1000*60*60 ;
 
-    private JwtUtil(JwtSecretKeyGenerator keyGenerator){
+    public JwtUtil(JwtSecretKeyGenerator keyGenerator){
         this.keyGenerator = keyGenerator;
     }
 
