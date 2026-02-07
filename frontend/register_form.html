@@ -8,16 +8,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Added styles for the OTP section */
+        .phone-container {
+            display: flex;
+            gap: 10px;
+        }
+        .phone-container input {
+            flex: 1;
+        }
+        .otp-btn {
+            background: #004080;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        .otp-btn:disabled {
+            background: #ccc;
+        }
+        .hidden-field {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="left-panel">
             <div class="left-panel-content">
-                
                 <div class="smartgov-image-placeholder">
                     <img src="https://static.vecteezy.com/system/resources/previews/003/329/602/original/smart-governance-gradient-blue-concept-icon-vector.jpg" alt="SmartGov Digital Services Icon">
                 </div>
-                
                 <h2>CREATE YOUR DIGITAL GOVERNMENT ACCOUNT</h2>
                 <p>Register once to access all secure services, payments, and document portals.</p>
             </div>
@@ -36,7 +60,7 @@
                     </svg>
                 </div>
                 <h3 id="registration-heading">Start Your Citizen Registration</h3>
-                <form class="register-form">
+                <form class="register-form" id="reg-form">
                     
                     <div class="input-group">
                         <input type="text" placeholder="Full Name" required>
@@ -50,14 +74,22 @@
                     </div>
 
                     <div class="input-group hidden-field" id="employee-id-group">
-                        <input type="text" placeholder="Official Employee ID" required>
+                        <input type="text" placeholder="Official Employee ID">
                     </div>
                     <div class="input-group" id="national-id-group">
-                        <input type="text" placeholder="National ID / Citizen ID" required>
+                        <input type="text" placeholder="National ID / Citizen ID">
                     </div>
                     
                     <div class="input-group">
-                        <input type="tel" placeholder="Mobile Number (e.g., 999-888-7777)" required pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}">
+                        <div class="phone-container">
+                            <input type="tel" id="mobile-number" placeholder="Mobile Number" required pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}">
+                            <button type="button" class="otp-btn" id="send-otp-btn">Send OTP</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group hidden-field" id="otp-group">
+                        <input type="text" id="otp-input" placeholder="Enter 6-digit OTP" maxlength="6">
+                        <small style="color: green; font-size: 11px;">OTP sent to your mobile number!</small>
                     </div>
                     
                     <div class="input-row">
@@ -80,7 +112,6 @@
                         <textarea placeholder="Residential/Official Address" rows="3" required></textarea>
                     </div>
 
-                    
                     <div class="form-options register-options">
                         <label class="checkbox-container">
                             I agree to the Terms & Privacy Policy
@@ -112,21 +143,31 @@
             const nationalIdInput = nationalIdGroup.querySelector('input');
             const employeeIdInput = employeeIdGroup.querySelector('input');
 
-            if (userType === 'officer') {
-                heading.textContent = 'Municipal Officer Registration';
-                employeeIdGroup.classList.remove('hidden-field');
-                nationalIdGroup.classList.add('hidden-field');
-                employeeIdInput.setAttribute('required', 'required');
-                nationalIdInput.removeAttribute('required');
+            // --- OTP Logic ---
+            const sendOtpBtn = document.getElementById('send-otp-btn');
+            const otpGroup = document.getElementById('otp-group');
+            const otpInput = document.getElementById('otp-input');
 
-            } else if (userType === 'admin') {
-                heading.textContent = 'City Admin Registration';
+            sendOtpBtn.addEventListener('click', () => {
+                const mobile = document.getElementById('mobile-number').value;
+                if(mobile.length >= 10) {
+                    alert('OTP Sent to ' + mobile);
+                    otpGroup.classList.remove('hidden-field');
+                    otpInput.setAttribute('required', 'required');
+                    sendOtpBtn.textContent = 'Resend';
+                } else {
+                    alert('Please enter a valid mobile number first.');
+                }
+            });
+
+            // --- User Type Logic ---
+            if (userType === 'officer' || userType === 'admin') {
+                heading.textContent = userType === 'officer' ? 'Municipal Officer Registration' : 'City Admin Registration';
                 employeeIdGroup.classList.remove('hidden-field');
                 nationalIdGroup.classList.add('hidden-field');
                 employeeIdInput.setAttribute('required', 'required');
                 nationalIdInput.removeAttribute('required');
-                
-            } else { // Default to Citizen
+            } else {
                 heading.textContent = 'Citizen Registration';
                 employeeIdGroup.classList.add('hidden-field');
                 nationalIdGroup.classList.remove('hidden-field');
@@ -134,6 +175,15 @@
                 employeeIdInput.removeAttribute('required');
             }
         });
+        document.getElementById('reg-form').addEventListener('submit', (e) => {
+    e.preventDefault(); // Stop page refresh
+    const params = new URLSearchParams(window.location.search);
+    const userType = params.get('type') || 'citizen';
+    
+    // Redirect to dashboard with the same user type
+    window.location.href = `dashboard.html?type=${userType}`;
+});
     </script>
+  
 </body>
 </html>

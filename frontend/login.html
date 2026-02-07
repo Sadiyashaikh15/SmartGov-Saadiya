@@ -71,5 +71,13 @@
             </div>
         </div>
     </div>
+    <script>
+    document.querySelector('.login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Since login is general, let's default to citizen or 
+        // add logic to check ID prefix
+        window.location.href = "dashboard.html?type=citizen";
+    });
+</script>
 </body>
 </html>
